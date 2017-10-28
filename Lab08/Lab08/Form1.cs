@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
 
 namespace Lab08
 {
@@ -15,6 +16,14 @@ namespace Lab08
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            Pen bluepen = new Pen(Color.Blue, 2);
+            g.DrawRectangle(bluepen, 10, 10, 100, 100);
+            bluepen.Dispose();
         }
     }
 }
