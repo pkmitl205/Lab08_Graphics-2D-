@@ -22,8 +22,12 @@ namespace Lab08
         {
             Graphics g = e.Graphics;
             Bitmap bmp = new Bitmap("D:\\Capture.PNG");
+
+            Rectangle destrect = new Rectangle(10, 10, bmp.Width / 2, bmp.Height / 2);
+            Rectangle srcrect = new Rectangle(0, 0, bmp.Width, bmp.Height);
+
             this.SetClientSizeCore(bmp.Width + 20, bmp.Height + 20);
-            e.Graphics.DrawImage(bmp, 10, 10);
+            g.DrawImage(bmp, destrect, srcrect, GraphicsUnit.Pixel);
             g.Dispose();
         }
     }
