@@ -23,11 +23,23 @@ namespace Lab08
             Graphics g = e.Graphics;
             Bitmap bmp = new Bitmap("D:\\Capture.PNG");
 
-            Rectangle destrect = new Rectangle(10, 10, bmp.Width, bmp.Height);
-            Rectangle srcrect = new Rectangle(0, 0, bmp.Width/2, bmp.Height/2);
+            Rectangle topleft = new Rectangle(0, 0, bmp.Width / 2, bmp.Height / 2);
+            Rectangle topright = new Rectangle(bmp.Width / 2, 0, bmp.Width / 2, bmp.Height / 2);
+            Rectangle bottomleft = new Rectangle(0, bmp.Height / 2, bmp.Width / 2, bmp.Height / 2);
+            Rectangle bottomright = new Rectangle(bmp.Width / 2, bmp.Height / 2, bmp.Width / 2, bmp.Height / 2);
 
-            this.SetClientSizeCore(bmp.Width + 20, bmp.Height + 20);
-            g.DrawImage(bmp, destrect, srcrect, GraphicsUnit.Pixel);
+            bmp.RotateFlip(RotateFlipType.RotateNoneFlipNone);
+            e.Graphics.DrawImage(bmp, topleft);
+
+            bmp.RotateFlip(RotateFlipType.RotateNoneFlipX);
+            e.Graphics.DrawImage(bmp, topright);
+
+            bmp.RotateFlip(RotateFlipType.Rotate180FlipNone);
+            e.Graphics.DrawImage(bmp, bottomleft);
+
+            bmp.RotateFlip(RotateFlipType.Rotate180FlipY);
+            e.Graphics.DrawImage(bmp, bottomright);
+
             g.Dispose();
         }
     }
