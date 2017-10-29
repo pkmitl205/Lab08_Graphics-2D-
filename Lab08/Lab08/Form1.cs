@@ -20,11 +20,26 @@ namespace Lab08
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            Image image = Image.FromFile("D:\\Capture.PNG");
-            //Change "D:\\Capture.PNG" to match your image path and name.
-            TextureBrush brush = new TextureBrush(image);
-            Rectangle rect = new Rectangle(10, 10, 180, 150);
-            e.Graphics.FillEllipse(brush, rect);
+            Graphics g = e.Graphics;
+            g.Dispose();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            LinearGradientBrush pnlGdt = new LinearGradientBrush(panel1.ClientRectangle,
+            Color.Yellow, Color.Navy, 0f, true);
+
+            e.Graphics.FillRectangle(pnlGdt, panel1.ClientRectangle);
+            pnlGdt.Dispose();
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+            LinearGradientBrush pnlGdt = new LinearGradientBrush(panel2.ClientRectangle,
+            Color.Yellow, Color.Navy, 90f, true);
+
+            e.Graphics.FillRectangle(pnlGdt, panel2.ClientRectangle);
+            pnlGdt.Dispose();
         }
     }
 }
