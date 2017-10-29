@@ -23,22 +23,15 @@ namespace Lab08
             Graphics g = e.Graphics;
             Bitmap bmp = new Bitmap("D:\\Capture.PNG");
 
-            Rectangle topleft = new Rectangle(0, 0, bmp.Width / 2, bmp.Height / 2);
-            Rectangle topright = new Rectangle(bmp.Width / 2, 0, bmp.Width / 2, bmp.Height / 2);
-            Rectangle bottomleft = new Rectangle(0, bmp.Height / 2, bmp.Width / 2, bmp.Height / 2);
-            Rectangle bottomright = new Rectangle(bmp.Width / 2, bmp.Height / 2, bmp.Width / 2, bmp.Height / 2);
-
-            bmp.RotateFlip(RotateFlipType.RotateNoneFlipNone);
-            e.Graphics.DrawImage(bmp, topleft);
-
-            bmp.RotateFlip(RotateFlipType.RotateNoneFlipX);
-            e.Graphics.DrawImage(bmp, topright);
-
-            bmp.RotateFlip(RotateFlipType.Rotate180FlipNone);
-            e.Graphics.DrawImage(bmp, bottomleft);
-
-            bmp.RotateFlip(RotateFlipType.Rotate180FlipY);
-            e.Graphics.DrawImage(bmp, bottomright);
+            this.SetClientSizeCore(bmp.Width, bmp.Height);
+            Rectangle destrect = new Rectangle(0, 0, bmp.Width, bmp.Height);
+            Brush myBrush = new SolidBrush(Color.Coral);
+            e.Graphics.DrawImage(bmp, destrect);
+            e.Graphics.DrawString("Hello World",                               //string
+                                   new Font("Verdana", 20, FontStyle.Bold),         // Font , size
+                                   myBrush,
+                                   0,       // x position to display font
+                                   0);      // y position to display font
 
             g.Dispose();
         }
