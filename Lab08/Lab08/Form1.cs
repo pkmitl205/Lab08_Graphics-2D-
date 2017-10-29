@@ -20,15 +20,22 @@ namespace Lab08
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            Graphics g = e.Graphics;
-            Point[] pt = { new Point (10,22),
-                           new Point (188,246),
-                           new Point (250,192),
-                           new Point (220,48)
-                          };
-            g.FillClosedCurve(Brushes.Blue, pt);
-            g.DrawClosedCurve(Pens.Red, pt);
-            g.Dispose();
+            this.SetClientSizeCore(500, 600);
+            HatchBrush brush;
+            int x = 20;
+            int y = 20;
+            foreach (HatchStyle brushStyle in Enum.GetValues(typeof(HatchStyle)))
+            {
+                brush = new HatchBrush(brushStyle, Color.Navy, Color.Yellow);
+                e.Graphics.FillRectangle(brush, x, y, 40, 20);
+
+                y += 30;
+                if ((y + 30) > this.ClientSize.Height)
+                {
+                    y = 20;
+                    x = 180;
+                }
+            }
         }
     }
 }
