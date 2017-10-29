@@ -20,22 +20,11 @@ namespace Lab08
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            this.SetClientSizeCore(500, 600);
-            HatchBrush brush;
-            int x = 20;
-            int y = 20;
-            foreach (HatchStyle brushStyle in Enum.GetValues(typeof(HatchStyle)))
-            {
-                brush = new HatchBrush(brushStyle, Color.Navy, Color.Yellow);
-                e.Graphics.FillRectangle(brush, x, y, 40, 20);
-
-                y += 30;
-                if ((y + 30) > this.ClientSize.Height)
-                {
-                    y = 20;
-                    x = 180;
-                }
-            }
+            Image image = Image.FromFile("D:\\Capture.PNG");
+            //Change "D:\\Capture.PNG" to match your image path and name.
+            TextureBrush brush = new TextureBrush(image);
+            Rectangle rect = new Rectangle(10, 10, 180, 150);
+            e.Graphics.FillEllipse(brush, rect);
         }
     }
 }
